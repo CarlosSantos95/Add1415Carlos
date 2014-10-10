@@ -1,0 +1,77 @@
+<html>
+<head>
+	<title>T&iacute;tulo del trabajo</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Acceso remoto</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2013/2014</i></li>
+    <li><b>Fecha de entrega:</b> <i>10 de Octubre de 2014</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque0'>Preparación</a>|  <a href='#bloque1'>VNC</a> | <a href='#bloque2'>RDP</a> | <a href='#final'>Servidor de terminales</a>
+</div>
+<h1><a id='bloque0'>Preparación</a></h1>
+<p>En esta práctica vamos a utilizar los siguientes SO:Windows 2008 Server,Windows 7 y Lubuntu.
+A continuación debemos configurar correctamente las ips para poner establecer conexión entre las diferentes máquinas y también para poder acceder a la red para descargar cualquier paquete necesario durante la 
+práctica.</p>
+
+<h1><a id='bloque1'>VNC</a></h1>
+<p>Para poder conectarnos de Windows a Windows,no necesitamos obligatoriamente el programa VNC ya que viene un programa predeterminado en el SO.Desde una maquina abrimos el programa de escritorio remoto y ponemos la ip de la máquina a la que queremos acceder.</p>
+  <img src='./files/WW.png'/>
+  <br>
+  <p>Ahora accederemos a Windows desde Linux,para este caso es necesario instalar VNC.</p>
+    <img src='./files/1.png'/>
+    <br>
+    <p>Una vez instalado,lo probamos.</p>
+      <img src='./files/windowsdesdelinux.png'/>
+  <br>
+  <p>A continuación,accederemos a linux desde linux.</p>
+    <img src='./files/linuxalinux.png'/>
+    <br>
+    <p>Por último accedemos a linux desde windows.</p>
+      <img src='./files/linuxdesdewindows.png'/>
+
+
+<h1><a id='bloque2'>RDP</a></h1>
+<p>A continuación realizaremos lo mismos pasos pero con RDP.<br>Entre sistemas windows no es necesario instalar nada ya que viene por defecto,es una gran ventaja.</p>
+  <img src='./files/dewindowsa2008.png'/>
+  <p>Para acceder de linux a windows es necesario instalar un programa de control remoto,para ello en linux abrimos la consola e introducimos el siguiente comando "apt-get install vinagre",con esto instalamos un programa que nos permite acceder a windows por RDP.</p>
+  <br>
+    <img src='./files/linuxa2008.png'/><br>
+      <img src='./files/linuxa20082.png'/><br>
+      <p>Por último debemos acceder de a linux desde windows,pero daba error y no he podido solucionarlo. </p>
+<img src='./files/windowsalinuxERROR.png'/><br>
+<h1><a id='final'>Servidor de terminales</a></h1>
+<p>Para este apartado utilizaremos el windows 2008 Server y tenemos que agregar una función determinal services.</p>
+<img src='./files/ts/1.png'/><br>
+<img src='./files/ts/2.png'/><br>
+<img src='./files/ts/3.png'/><br>
+<img src='./files/ts/4.png'/><br>
+<img src='./files/ts/5.png'/><br>
+<img src='./files/ts/6.png'/><br>
+<img src='./files/ts/7.png'/><br>
+<p>A continuación agregamos un programa cualquiera en "Programas de RemoteApp",e mi caso agreggo el Wordpad</p>
+<img src='./files/ts/añadirprograma.png'/><br>
+<p>Ahora crearemos usuarios y los agregamos al grupo de acceso remoto.</p>
+<img src='./files/ts/usuario.png'/><br>
+<img src='./files/ts/grupo.png'/><br>
+<P>Por último probamos que el programa que hemos agregado anteriormente funciona tanto en el servidor como en el cliente(en el cliente agregamos el programa añadido en el servidor).</P>
+<img src='./files/ts/remoteappEscritorio+.png'/><br>
+<p>Wordpad en el servidor.</p>
+<img src='./files/ts/wordpadservidor.png'/><br>
+<p>Wordpad en el cliente.</p>
+<img src='./files/ts/wordpadcliente.png'/><br>
+
+</body>
+</html>
