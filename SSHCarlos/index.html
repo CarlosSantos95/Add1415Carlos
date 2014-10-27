@@ -1,0 +1,109 @@
+<html>
+<head>
+	<title>T&iacute;tulo del trabajo</title>
+</head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>SSH</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>24 de Octubre de 2014</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Preparativos</a> | <a href='#bloque2'>SSH Server</a> | <a href='#bloque3'>Bash</a>|<a href='#bloque4'> 
+	Autenticación mediante claves públicas</a>| <a href='#bloque5'>Uso de SSH como túnel para X</a>| <a href='#bloque6'>Aplicaciones Windows nativas </a>| <a href='#bloque7'>Restricciones de uso</a>
+</div>
+<h1><a id='bloque1'>Preparativos</a></h1>
+<p>Lo primero que tenemos que hacer es configurar nuestras 
+máquinas para poder realizar el trabajo de la forma mas óptima posible.</p>
+<p>cliente Windows,configuramos la red y el fichero hosts,también instalamos el "Putty"</p>
+ <img src='./files/3wciente.png'/><br>
+   <img src='./files/hostsW.png'/><br>
+     <img src='./files/putty2.png'/>
+ 
+ <p>En el cliente Linux,modificamos el fichero hosts y configuramos la red</p>
+  <img src='./files/hostname2.png'/><br>
+    <img src='./files/hosts5.png'/>
+ <p>En el servidor,configuramos la red,modificamos el fichero hosts y creamos los siguientes usuarios "remoteuser1,remoteuser2,
+ remoteuser3 y remoteuser4".</p>
+ <img src='./files/1servidor.png'/><br>
+  <img src='./files/hostname.png'/><br>
+   <img src='./files/hosts4.png'/><br> 
+   <img src='./files/añadirusuario.png'/>
+
+
+
+
+
+<h1><a id='bloque2'>SSH Server</a></h1>
+<p>Instalamos en nuestro servidor de Linux el SSH Server</p>
+  <img src='./files/sshserver.png'/><br>
+  <p>Desde el propio SSH-SERVER, verificamos que el servicio está en ejecución: "service ssh status"</p><br>
+   <img src='./files/sshstatus.png'/><br></br>
+   <p>Modificamos el fichero de configuración SSH (/etc/ssh/sshd_config) para dejar una única línea: "HostKey /etc/ssh/ssh_host_rsa_key".
+    Comentamos el resto de líneas con configuración HostKey.</p>
+     <img src='./files/almohadillas.png'/><br>
+<p>Comprobamos el funcionamiento de la conexión SSH desde cada cliente usando el usuario remoteuser1.
+ Desde el cliente hacemos "ssh remoteuser1@ssh-server".</p>
+    <img src='./files/3.3.png'/><br>
+       <img src='./files/3.4.png'/><br>
+       <p>Comprobamos el contenido del fichero $HOME/.ssh/known_hosts. en el equipo cliente</p>
+        <img src='./files/knownhosts.png'/><br>
+        <p>Generamos nuevas claves de equipo en SSH-SERVER. Como usuario root ejecutamos en SSH-SERVER: "ssh-keygen -t rsa -f 
+        /etc/ssh/ssh_host_rsa_key"</p>
+         <img src='./files/key.png'/><br>
+         
+         
+         <h1><a id='bloque3'>Bash</a></h1>
+         <p>añadimos las siguientes líneas al fichero de configuración del usuario en la máquina servidor</p>
+         <img src='./files/bashrc.png'/><br>
+         <p>Comprobamos el cambio de color</p>
+              <img src='./files/3.3.png'/><br>
+              
+              <h1><a id='bloque4'>Autenticación mediante claves públicas</a></h1>
+              <p>Iniciamos sesión con nuestro usuario desde la máquina cliente y ejecutamos "ssh-keygen -t rsa" para generar un nuevo par de claves para el usuario en "/home/nuestro-usuario/.ssh/id_rsa" y 
+              "/home/nuestro-usuario/.ssh/id_rsa.pub".</p>
+              <p>Ahora vamos a copiar la clave pública (id_rsa.pub) del usuario de la máquina cliente, al fichero "authorized_keys" del usuario
+               remoteuser4 en el servidor. Hacemos "scp .ssh/id_rsa.pub remoteuser4@ssh-server:.ssh/authorized_keys".</p>
+                 <img src='./files/4.4.png'/><br>
+                 
+                 
+                 <h1><a id='bloque5'>Uso de SSH como túnel para X</a></h1>
+                 <p>Instalamos en el servidor una aplicación de entorno gráfico(APP1) que no esté en el cliente. Por ejemplo Geany.</p>
+                  <img src='./files/5.1.png'/><br>
+                  <p>Modificamos el servidor SSH para permitir la ejecución de aplicaciones gráficas, desde los clientes. Consultamos el fichero de configuración /etc/ssh/sshd_config (X11Forwarding yes)</p>
+                  <img src='./files/5.3.png'/><br>
+                  <p>Comprobamos que laaplicación instalada funciona correctamente desde el cliente Linux.</p>
+                  <img src='./files/5.4.png'/><br>
+<h1><a id='bloque6'>Aplicaciones Windows nativas</a></h1>
+<p>Instalamos el emulador Wine en el ssh-server</p>
+<p>Ahora podríamos instalar alguna aplicación (APP2) de Windows en el servidor SSH usando el emulador Wine.Podemos usar el Bloc de Notas que viene con Wine: wine notepad.</p>
+<img src='./files/6.png'/><br>
+<h1><a id='bloque7'>Restricciones de uso</a></h1>
+<p>Modificamos el fichero de configuración del servidor SSH (/etc/ssh/sshd_config) para conseguir restringir el acceso a "remoteuser"</p>
+<img src='./files/7.2.png'/><br>
+<p>Haceos la comprobación</p>
+<img src='./files/7.2.1.png'/><br>
+<img src='./files/7.2.2.png'/><br>
+<p>Vamos a crear una restricción para que sólo las máquinas clientes con las IP's autorizadas puedan acceder a nuestro servidor.
+Consultamos los ficheros de configuración /etc/hosts.allow y /etc/host.deny</p>
+<img src='./files/7.3.png'/><br>
+<img src='./files/7.3.1.png'/><br>
+<img src='./files/7.3.2.png'/><br>
+
+<p>Vamos a crear una restricción de permisos sobre determinadas aplicaciones.Crearmos un grupo llamado remoteapps,incluimos el usuario remoteuser4 en el grupo.
+Ponemos el programa APP1 al grupo propietario a remoteapps y también añadimos los permisos del ejecutable de APP1 a 750 y así impedir que los que no pertenezcan al grupo puedan ejecutar el programa. </p>
+<img src='./files/7.4.png'/><br>
+<img src='./files/7.4.1.png'/><br>
+
+</body>
+</html>
