@@ -1,0 +1,57 @@
+<html>
+<head>
+	<title>T&iacute;tulo del trabajo</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>LDAP</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>3 de Noviembre de 2014</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>LDAP</a> 
+</div>
+<h1><a id='bloque1'>LDAP</a></h1>
+<p>Para empezar esta actividad es necesario tener configurada la ip de la máquina y también en el fichero host ponemos la ip para evitar cualquier fallo.</p>
+ <img src='./files/1.png'/>
+  <img src='./files/16.png'/>
+  <p>A continuación procedemos a instalar el ldap.</p>
+   <img src='./files/2.png'/>
+   <p>Una vez instalado debemos configurarlo,para ello realizaremos el siguiente comando "dpkg-reconfigure slapd".
+   Una vez dentro,realizaremos los pasos tal y como nos indica en el pdf informativo asignado.</p>
+      <img src='./files/6.png'/>
+      <img src='./files/7.png'/>
+         <img src='./files/8.png'/>
+            <img src='./files/9.png'/>
+               <img src='./files/10.png'/>
+                  <img src='./files/11.png'/>
+                     <img src='./files/12.png'/>
+                        <img src='./files/13.png'/>
+                        <p>Una vez configurado,reiniciamos el ldap.</p>
+                            <img src='./files/14.png'/>
+                            <p>Debemos cerciorarnos de que el programa se ejecute una vez iniciado el sistema automaticamente,en mi caso ya lo tenia por defecto.</p>
+                                <img src='./files/17.png'/>
+                                <p>Ahora debemos instalar phpldapadmin y apache</p>
+                                    <img src='./files/19.png'/>
+                                        <img src='./files/20.png'/>
+                                        
+                                       <p>Una vez hecho esto comprobamos que podemos acceder a través de la red.</p>
+                                           <img src='./files/23.png'/>
+                                       <p>Creamos las unidades organizativas: grupos y usuarios. Creamos dentro de ou=grupos, los grupos de profesores y alumnos
+								y creamos dentro de ou=usuarios, varios usuarios profesores y alumnos</p>
+                                           <p>Por ultimo instalamos el jxplorer y comprobamos que también podemos acceder.</p>
+                                               <img src='./files/26.png'/>
+                                                   <img src='./files/25.png'/>
+
+</body>
+</html>
