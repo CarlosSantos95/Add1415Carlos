@@ -1,0 +1,70 @@
+<html>
+<head>
+	<title>T&iacute;tulo del trabajo</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Autenticación LDAP</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>10 de Octubre de 2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Autenticación LDAP</a>
+</div>
+<h1><a id='bloque1'>autenticación LDAP</a></h1>
+<p>Antes de comenzar es necesario ver la configuración de red de la máquina virtual cliente que vayamos a utilizar,en nuestro caso LUbuntu 14.
+Una vez revisado esto,empezaremos con nuestra práctica.</p>
+<p>Como primer paso ejecutaremos el comando apt-get install libpam-ldap y configuraremos dicha libreria.</p>
+  <img src='./files/1.png'/>
+  <p>Indicamos la URI o dirección para acceder al servidor LDAP; el formato es ldap://dirección:puerto.</p>
+    <img src='./files/2.png'/>
+    <p>Especificamos la base del directorio LDAP y aceptamos. </p>
+        <img src='./files/3.png'/>
+        <p>Establecemos la versión del protocolo LDAP</p>
+         <img src='./files/5.png'/>
+         <p>Indicamos “Sí”, de forma que el usuario “root” podrá cambiar las contraseñas de los usuarios del directorio LDAP del mismo 
+modo en que cambia las contraseñas de los usuarios locales.</p>
+             <img src='./files/6.png'/>
+             <p>Seleccionamos que “No”, indicando en este caso que no es necesario autenticarse (login) para consultar el directorio LDAP (esto 
+es, que permite el acceso anónimo).</p>
+  <img src='./files/7.png'/>
+  <p>Indicamos la cuenta del administrador del servidor LDAP, de forma que los cambios de contraseña realizados por el administrador 
+del sistema “root” se puedan actualizar en el directorio LDAP</p>
+  <img src='./files/8.png'/>
+  <p>Indicamos la contraseña del administrador del directorio LDAP</p>
+   <img src='./files/9.png'/>
+<p>A continuación vamos al fichero ldap.conf para modificar algunos parámetros que nos faltan por ajustar.</p>
+<p>En la línea host ponemos nuestra ip del servidor LDAP,también modificamos la línea "base".</p>
+ <img src='./files/10.png'/>
+ <p>Descomentamos la línea donde nos define el puerto y modificamos la línea "rootbinddn".</p>
+  <img src='./files/11.png'/>
+  <p>Ahora modificamos las lineas nss_base_passwd,nss_base_shadow y nss_base_group.</p>
+    <img src='./files/12.png'/>
+    <p>A continuación maccedemos al fichero nsswitch.conf y modificamos las líneas passwd,group y shadow.</p>
+      <img src='./files/13.png'/>
+      <p>Como siguiente paso accederemos al fichero common-auth y ponemos lo siguiente "auth sufficient pam_ldap.so".    </p>
+            <img src='./files/14.png'/>
+            <p>Realizamos el mismo paso con el fichero common-account "account sufficient pam_ldap.so"</p>
+            <img src='./files/15.png'/>
+            <p>En common-session "session sufficient pam_ldap.so"</p>
+                     <img src='./files/16.png'/>
+                    <p>Lo mismo en common-password "password sufficient pam_ldap.so"</p>
+                      <img src='./files/17.png'/>
+         <p>Para finalizar la configuración de estos ficheros accederemos al fichero common-session y ajuntamos la siguiente línea 
+         "session required pam_mkhomedir.so skel=/etc/skel umask=0022"</p>
+                     <img src='./files/18.png'/>
+<p>Una vez terminado todo esto deberíamos poder acceder desde el cliente sin ningún problema y poder acceder al servidor LDAP,pero me da un error 
+y la máquina virtual cliente no me arranca y no he encontrado forma para solucionarlo.</p>                     
+
+</body>
+</html>
