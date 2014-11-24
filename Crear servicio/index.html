@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>T&iacute;tulo del trabajo</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Crear un servicio</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>21 de noviembre de 2014</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Script demonio</a> | <a href='#bloque2'>Script de control</a> | <a href='#final'>Upstart</a>
+</div>
+<h1><a id='bloque1'>Script demonio</h1>
+<p>Crear la carpeta "/etc/kup", y un fichero "/etc/kup/kup.log" vacío.</p>
+<img src='./files/1.png'/>
+<p>Crear un script "/usr/local/bin/kupd" que será nuestro demonio.</p>
+<img src='./files/2.png'/>
+<p>Dar permisos ejecución al script.Ejecutar "cat /etc/kup/kup.log"</p>
+<img src='./files/4.png'/>
+
+<h1><a id='bloque2'>Script de control</a></h1>
+<p>Ahora vamos a crear un script "/etc/init.d/kup" y damos permisos al script</p>
+<img src='./files/7.png'/> <br><p></p>
+<img src='./files/6.png'/>
+<p>Probar que el guión de inicio/parada funciona correctamente con nuestro servicio, mediante "/etc/init.d/kup [start|stop|status]"</p>
+<img src='./files/8.png'/>
+<h1><a id='final'>Upstart</a></h1>
+<p>Ahora vamos a configurar el servicio, al estilo Upstart.Crear un fichero /etc/init/kup2.conf.</p>
+<img src='./files/9.png'/>
+<p>A continuación procedemos a instalar upstart,a mi me da un error y no me deja instalarlo.</p>
+<img src='./files/10.png'/>
+</body>
+</html>
