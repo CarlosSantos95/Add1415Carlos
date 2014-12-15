@@ -1,0 +1,73 @@
+<html>
+<head>
+	<title>Clientes Ligeros</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div id="cabecera" style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Administración de Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Clientes ligeros</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>12 de Diciembre de 2014</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<p><a href='#bloque2'><b>Servidor</b></a> |	<a href='#cliente'><b>Cliente</b></a>  |	<a href='#bloque3'><b>Instalación servicio LTSP</b></a> | <a href='#bloque4'><b>Comprobación</b></a></p>
+</div>
+
+<h1><a id='bloque2'>Servidor</a></h1>
+
+<p>Primero creamos una Máquina Virtual con un adaptador modo puente y otro en modo 
+	red interna para que así tenga conexión a internet y a nuestro cliente a través de la interna.</p>
+	</p>
+	
+	<p>Instalamos el sistema operativo correspondiente en el servidor.</p>
+	
+	<p>Procedemos a configurar las tarjetas de red.</p>
+		  <img src='./files/20.png'/>
+
+	<p>Modificamos los ficheros "/etc/hosts" y "/etc/hostname" y ponemos nuestro 
+	primer apellido como nombre del servidor y el segundo apellido como nombre del dominio.</p>
+		 <img src='./files/21.png'/>
+
+	<p>Accedemos al fichero "/etc/resolv.conf" para añadir la ip de router que nos hace de servidor DNS.</p>
+	 <img src='./files/22.png'/>
+	<p>A continuación crearemos los usuarios correspondientes con la práctica.</p>
+		 <img src='./files/2.png'/>
+
+
+<h2><a id='cliente'>Cliente</a></h1>
+
+	<p>Crearemos una máquina virtual que no tenga disco duro y por lo tanto,sistema operativo.
+	El objetivo es que se conecte al servidor y adquiera la configuracion correspondiente.</p>
+		 <img src='./files/23.png'/>
+
+<h1><a id='bloque3'>Servicio LTSP</a></h1>
+
+	<p>Instalamos el servicio :"apt-get install ltsp-server-standalone".
+	a continuación ejecutamos el comando :"ltsp-build-client" para generar las carpetas necesarias para el 
+	funcionamiento de los clientes.
+	Por último nos cercioramos que tenemos el ssh instalado y actualizado :"apt-get install openssh-server".</p>
+	<img src='./files/3.png'/><br/><p></p>
+	<img src='./files/4.png'/><br/><p></p>
+	<img src='./files/5.png'/><br/><p></p>
+
+
+<h1><a id='bloque4'>Comprobación</a></h1>
+
+<p>Con el servidor encendido iniciamos nuestra máquina cliente, para que funcione correctamente debe poder conectarse con 
+el servidor y de esta manera adquirir una configuración para poner iniciar.</p>
+ <img src='./files/15.png'/>
+ <p>Iniciamos sesión con un usuario creado anteriormente en el servidor.</p>
+  <img src='./files/16.png'/>
+	
+
+</body>
+</html>
