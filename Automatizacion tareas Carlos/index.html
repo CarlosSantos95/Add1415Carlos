@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Automatización de tareas</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Automatización de tareas</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>20 de Enero de 2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Automatización en Windows</a> | <a href='#bloque2'>Automatización en Linux</a>
+</div>
+<h1><a id='bloque1'>Automatización en Windows</a></h1>
+	<h2>¿ Como acceder ?</h2>
+	<p>Para poder realizar la automatización de tareas debemos acceder al menú "Programador de tareas" y dentro de dicho menú, accedemos a la opción,
+		"Crear tarea básica".</p>
+ <h2>Tarea Periódica</h2>
+<p>Esta tarea se ejecutará todos los días a las 8:17 y nos mostrará un mensaje cuando se ejecute.</p>
+  <img src='./files/5.png'/><br/>
+  <img src='./files/11.png'/><br/>
+  <h2>Tarea diferida</h2>
+  <p>Esta tarea se ejecutará una vez,a las 8:21 del 20/01/15 cuya funcón será la de apagar el ordenador a dicha hora.</p>
+  <img src='./files/6.png'/><br/>
+  <img src='./files/7.png'/><br/>
+  <h2>Tarea asíncrona</h2>
+  <p>Esta tarea se ejecutará todos los martes, miércoles y sábados a las 8:31 cuya función consiste en revisar el disco duro del sistema.
+	Si la tarea no se ejecuta en esa hora, se reiniciará un minuto después de su programación normal.</p>
+  <img src='./files/9.png'/><br/>
+  <img src='./files/9.1.png'/><br/>
+  <img src='./files/9.2.png'/><br/>
+  <img src='./files/10.png'/><br/>
+  
+<h1><a id='bloque2'>Automatización en Linux</a></h1>
+<h2>¿ Como acceder ?</h2>
+<p>Básicamente podemos realizar todo nestro trabajo desde la consola del sistema.Debemos tener un script creado, en mi caso Papelera.rb</p>
+	<h2>Tarea periódica</h2>
+	<p>Esta tarea se ejectuará periodicamente de lunes a viernes de todas las semanas del mes a las 14:00 y su función consiste en vaciar la carpeta .papelera 
+		que he creado en una actividad anterior.</p>
+	 <img src='./files/Periodica.png'/><br/>
+	 <h2>Tarea diferida </h2>
+		<p>Esta tarea ejecutará el script con las opciones por defecto de la carpeta cron.daily. Para ello debemos mover o copiar el script a dicha carpeta.</p>
+		 <img src='./files/diferida.png'/><br/>
+	 <h2>Tarea asíncrona</h2>
+	 <p>Esta tarea programa un apagado de la consola en 1 minuto.</p>
+	  <img src='./files/asincrona.png'/><br/>
+	
+
+</body>
+</html>
