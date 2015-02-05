@@ -1,0 +1,99 @@
+<html>
+<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>T&iacute;tulo del trabajo</title>
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Infraestructura</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo e Iván José Hdez Regalado</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>5 de Febrero de 2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Servidor</a> | <a href='#bloque2'>Cliente 1</a> | <a href='#final'>Cliente 2</a> | 
+<a href='#final0'>Certificado cliente 1</a>| <a href='#final2'>Certificado cliente 2</a>
+</div>
+<h1><a id='bloque1'>Servidor</a></h1>
+<p>Como primer paso tenemos que asegurarnos que tenemos una ip estática.</p>
+<img src='./files/01.png'/>
+<p>Tenemos que modificar el fichero /etc/resolv.conf introduciendo los siguientes datos. </p>
+<img src='./files/02.png'/>
+<p>Cambiamos el nombre de host de la máquina.</p>
+<img src='./files/04.png'/>
+<p>En el fichero /etc/hosts introdcimos las direccones ip de los clientes.</p>
+<img src='./files/05.png'/>
+<p>Nos aseguramos que todo está correctamente configurado y que existe conexión entre ambas.</p>
+<img src='./files/06.png'/>
+<p>A continuación instalamos el puppet master.</p>
+<img src='./files/07.png'/>
+<p>En el directorio /etc/puppet/manifests creamos un fichero llamado "site.pp" y otro directorio llamado "classes" y dentro de él 
+el fichero "hostlinux1.pp"</p>
+<img src='./files/08.png'/></br><p></p>
+<img src='./files/09.png'/>
+<p>Introducimos la siguiente información en el fichero "site.pp" para añadir el hostlinux1 en la confiiguracion del puppet.</p>
+<img src='./files/11.png'/>
+<p>Dentro del fichero "Hostlinux1.pp" añadimos los paquetes que queremos que se instalen en él.</p>
+<img src='./files/12.png'/>
+<h1><a id='bloque2'>Cliente 1</a></h1>
+<p>Primero debemos configurar la ip de la máquina.</p>
+<img src='./files/clet/13.png'/>
+<p>Cambiamos el nombre.</p>
+<img src='./files/clet/14.png'/>
+<p>Tenemos que modificar el fichero /etc/resolv.conf introduciendo los siguientes datos. </p>
+<img src='./files/clet/16.png'/>
+<p>Nos aseguramos que todo está correctamente configurado y que existe conexión entre ambas.</p>
+<img src='./files/clet/17.png'/>
+<p>A continuación instalamos el puppet.</p>
+<img src='./files/clet/18.png'/>
+<p>Ahora debemos configurar el fichero /etc/puppet/puppet.conf e indicar cúal es nuestro servidor.</p>
+<img src='./files/clet/19.png'/>
+<p>También debemos modificar el fichero /etc/default/puppet para indicar que inicie puppet desde el arranque de la máquina.</p>
+<img src='./files/clet/20.png'/>
+<h1><a id='final0'>Certificado cliente 1</a></h1>
+<p>Antes de que el master acepte al cliente 1,se deben intercambiar los certificados, posteriormente lo aceptamos.
+Para ello debemos ejecutar los siguientes comandos:</p>
+<img src='./files/21.png'/>
+<p>Ahora en el cliente reiniciamos y deberia haberse hechos los cambios, en nuestro caso no se produjo y tuvimos 
+que ingresar el siguiente comando.</p>
+<img src='./files/clet/22.png'/>
+<p>A continuación realizaremos el mismo paso pero modificaremos el contenido del fichero "hostlinux2.pp" para que se 
+produzcan otros cambios.</p>
+<img src='./files/22.png'/>
+<p>Verificamos en el cliente que se produjeron los cambios satisfactoriamente.</p>
+<img src='./files/clet/23.png'/>
+<h1><a id='final'>Cliente 2</a></h1>
+<p>Configuramos la tarjeta de red y modificamos el fichero "hosts" </p>
+<img src='./files/32.png'/><p></p>
+<img src='./files/33.png'/>
+<p>Instalamos el puppet en Windows teniendo en cuenta que sea la misma versión que en el servidor.</p>
+<img src='./files/35.png'/><p></p>
+<img src='./files/36.png'/>
+<p>En el directorio /etc/puppet/manifests/classes creamos el fichero "hostwindows1" con la siguiente información.</p>
+<img src='./files/30.png'/>
+<p>Añadimos al fichero "site.pp" el cliente de windows.</p>
+<img src='./files/31.png'/>
+<h1><a id='final2'>Certificado cliente 2</a></h1>
+<p>Antes de que el master acepte al cliente 2,se deben intercambiar los certificados, posteriormente lo aceptamos.
+Para ello debemos ejecutar los siguientes comandos:</p>
+<img src='./files/39.png'/><p></p>
+<img src='./files/41.png'/>
+<p>Posteriormente vamos al cliente 2 y ejecutamos el siguiente comando, una vez realizado se deberian producir los cambios.</p>
+<img src='./files/42.png'/><p></p>
+<img src='./files/43.png'/>
+<p>A continuación modificamos los ficheros "hostwindows2" y "site.pp" y vemos los cambios.</p>
+<img src='./files/46.png'/><p></p>
+<img src='./files/45.png'/><p></p>
+<img src='./files/47.png'/>
+<p>Comprobamos que se produjeron los cambios.</p>
+<img src='./files/49.png'/>
+</body>
+</html>
