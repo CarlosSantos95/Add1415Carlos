@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title>T&iacute;tulo del trabajo</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<style type="text/css">
+	
+	
+	
+	
+	</style>
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Servicios de impresión.</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>13 de Febrero de 2015</i></li>
+  </ul>
+  </div>
+</div>
+<div align='center' style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque0'>Requisitos</a> |<a href='#bloque1'>Impresora Local compartida por red</a> | <a href='#bloque2'>Acceso Web</a>
+</div>
+	<h1 align='center'><a id='bloque0'>Requisitos</a></h1>
+		<p align='center'>Necesitaremos tener dos sistemas instalados, un Windows Server 2008 como servidor y un Windows 7 como cliente. 
+		En el servidor debemos instalar el software PDFCreator, instalar el Active Directory y los servicios ded impresión.</p>
+			<h2 align='center'><u>PDFCreator</u></h2>
+				<p align='center'><img src='./files/1.png' border='2px'/></p>
+			<h2 align='center'><u>Instalación Active directory</u></h2>
+				<p align='center'> La instalación será sencilla, seguiremos los pasos de las siguientes capturas.</p>
+				 <p  align='center'><img src='./files/7.png' border='2px'/></p>
+				 <p  align='center'><img src='./files/8.png' border='2px'/></p>
+				 <p  align='center'><img src='./files/10.png' border='2px'/></p>
+				 <p  align='center'><img src='./files/11.png' border='2px'/></p>
+				 <p align='center'>Establecemos nuestro nombre de dominio.</p>
+					<p  align='center'><img src='./files/12.png' border='2px'/></p>
+					<p  align='center'><img src='./files/13.png' border='2px'/></p>
+					<p  align='center'><img src='./files/14.png' border='2px'/></p>
+				<p align='center'>Habilitamos el servidor DNS.</p>
+					<p  align='center'><img src='./files/15.png' border='2px'/></p>
+				<p align='center'>Seleccionamos la ubicación de los datos y archivos.</p>
+					<p  align='center'><img src='./files/17.png' border='2px'/></p>
+				<p align='center'>Establecemos una contraseña.</p>	
+					<p  align='center'><img src='./files/18.png' border='2px'/></p>
+				<p align='center'>Por último finalizamos nuestra instalación.</p>
+					<p  align='center'><img src='./files/19.png' border='2px'/></p>
+					<p  align='center'><img src='./files/20.png' border='2px'/></p>
+				<h2 align='center'>Servicios de impresión</h2>
+					<p align='center'>Para instalar esta función debemos acceder a la configuración del servidor y pinchar en la
+						opción "agregar funciones".</p>
+						<p  align='center'><img src='./files/21.png' border='2px'/></p>
+						<p align='center'>Marcamos los servicios de función "Servidor de impresión" e "impresión en internet".</p>
+						<p  align='center'><img src='./files/22.png' border='2px'/></p>
+						<p align='center'>Marcamos los servicios de función para el Servidor Web IIS. </p>
+						<p  align='center'><img src='./files/23.png' border='2px'/></p>
+						<p align='center'>Finalizamos y comprobamos que se realizó de forma correcta.</p>
+						<p  align='center'><img src='./files/24.png' border='2px'/></p>
+<h1  align='center'><a id='bloque1'>Impresora Local compartida por red</a></h1>
+							<p align='center'>A continuación vamos a Inicio/Panel de control/Impresoras y en propiedades de la impresora
+								PDFCreator, en la pestaña compartir, habilitamos la opción de compratir impresora y
+								 le ponemos el nombre "PDFnombreyapellidosdelalumno".</p>
+								 <p  align='center'><img src='./files/5.png' border='2px'/></p>
+								 <p align='center'>Como siguiente paso debemos agregar la impresora recientemente creada al cliente,
+								 para ello agregamos una nueva impresora, seleccionamos la opción "Agregar una impresora de red,
+								  inalámbrica o Bluetooth.</p>
+									<p  align='center'><img src='./files/27.png' border='2px'/></p>
+									<p align='center'>Asignamos nuestra impresora del servidor.</p>
+									<p  align='center'><img src='./files/28.png' border='2px'/></p>
+									<p  align='center'><img src='./files/29.png' border='2px'/></p>
+<h1  align='center'><a id='bloque2'>Acceso Web</a></h1>
+<p>Desde el servidor comprobamos que tenemos acceso web a "http://nombre o ip del servidor/printers" para que 
+aparezca en nuestro navegador un entorno que permite gestionar las impresoras de dicho equipo,nos aparecerá una ventana de autenticación,
+en el introduciremos un usuario del dominio, por ejemplo "Administrador".</p>
+<h2 align='center'><u>Gestión impresoras desde servidor mediante la web</u></h2>
+<p  align='center'><img src='./files/25.png' border='2px'/></p>
+
+<p  align='center'><img src='./files/26.png' border='2px'/></p>
+<p align='center'>Ahora debemos ir a la configuración del PDFCreator en el servidor y activamos la función de guardado y
+seleccionando la carpeta de destino que queramos.A continuación generamos en el cliente un fichero de texto y le damos a 
+la opción de imprimir con la impresora instalada.</p>
+<p  align='center'><img src='./files/30.png' border='2px'/></p>
+<p align='center'>Para finalizar debemos seleccionar los ficheros deseados e iniciar la impresión, el resultado será la obtención del fichero
+de texto del cliente en la carpeta establecida en el servidor.</p>
+<p  align='center'><img src='./files/32.png' border='2px'/></p>
+<p  align='center'><img src='./files/31.png' border='2px'/></p>
+
+</body>
+</html>
