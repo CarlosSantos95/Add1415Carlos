@@ -1,0 +1,72 @@
+<html>
+<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>Generación de usuarios</title>
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Generación de usuarios</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>1 de Marzo de 2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<p align='center'><a href='#bloque1'>Requisitos</a> | <a href='#bloque2'>Desarrollo</a></p>
+</div>
+<h1 align='center'><a id='bloque1'><u>Requisitos</u></a></h1>
+	<p align='center'>Para llevar a cabo esta práctica necesitaremos utilizar un Windows Server 2008 teniendo en él instalado previamente 
+	el Active Directory, tener descargardo el script XCACLS.vbs, debemos descargar el software gawk y por último el ejecutable cscript.exe que lo podemos descargar de 
+	manera muy sencilla en la web.</p>
+		<p align='center'><img border='2px' src='./files/8.png'/></p>
+
+<h1 align='center'><a id='bloque2'><u>Desarrollo</u></a></h1>
+	<p align='center'>Como primer paso debemos descargar e instalar el software gawk, la instalación que realizaremos será una instalación predeterminada.</p>
+		<p align='center'><img border='2px' src='./files/11.png'/></p>
+	<p align='center'>Si queremos asegurarnos de que podamos ejecutarlo desde cualquier directorio del sistema de ficheros del Windows,
+	deberíamos ir a la ruta Inicio > Equipo > Propiedades > Opciones avanzadas > Variables de entorno  y establecer la 
+	variable de entorno %PATH% añadiendole la siguiente ruta "C:\Program Files\GnuWIN32\bin;".</p>
+		<p align='center'><img border='2px' src='./files/40.png'/></p>
+	<p align='center'>Ahora descargaremos el script XCACLS.vbs. XCACLS.vbs es un script que nos permite, ver, modificar 
+	y eliminar permisos NTFS en Windows. Una vez descargado los extraeremos en la ruta C:\Windows. Buscaremos la función "IsOsSupported()" y la etidaremos para que soporte la versión 6.0 (Windows Server
+	2008) y 6.1 (Windows Server 2008 R2), para ello editaremos el script con un editor de textos plano.</p>
+		<p align='center'><img border='2px' src='./files/1.png'/></p>
+	<p align='center'>Luego cambiaremos el motor de secuencias de comandos predeterminado, de WSCRIPT a CSCRIPT, esto se debe a que XCACLS.vbs trabaja
+	mejor con cscript. Así que escribiremos el siguiente comando en Ejecutar: "cscript.exe /h:cscript". Para esto tenemos que descargar previamente el cscript.exe</p>
+		<p align='center'><img border='2px' src='./files/43.png'/></p>
+	<p align='center'>Para utilizar el script, debemos abrir una nueva consola de línea de comandos (cmd)
+	 e ir hasta el directorio C:\WINDOWS.</p>
+		<p align='center'><img border='2px' src='./files/5.png'/></p>
+	<p align='center'>Creamos la carpeta "Carpeta1" en la ruta C:\WINDOWS.</p>
+		<p align='center'><img border='2px' src='./files/2.png'/></p>
+	<p align='center'>Vemos los permisos NTFS predeterminados para esa carpeta</p>
+		<p align='center'><img border='2px' src='./files/6.png'/></p>
+	<p align='center'>Lo que necesitamos ahora, es ver el manual de ayuda que trae XCACLS.vbs, para eso escribiremos lo siguiente</p>
+		<p align='center'><img border='2px' src='./files/7.png'/></p>
+	<p align='center'>A continuación crearemos una nueva unidad organizativa en active directory llamada "Formación profesional"
+		ya que en los ficheros que crearemos a continuación introduciremos el nombre de dominio y la unidad organizativa donde que
+		queremos que se crean los usuarios</p>
+			<p align='center'><img border='2px' src='./files/45.png'/></p>
+	<p align='center'> Ahora debemos generar dos ficheros, uno lo llamaremos "usuarios.csv" que contiene 
+	4 campos: nombre;apellido1;apellido2;grupo</p>
+		<h3 align='center'>Fichero usuarios.csv</h3>
+			<p align='center'><img border='2px' src='./files/9.png'/></p>
+		<h3 align='center'>Fichero alta.awk</h3>
+		<p align='center'><img border='2px' src='./files/49.png'/></p>
+	<p align='center'>Con estos dos ficheros podemos crear un tercero "crear.bat" uqe finalmente ejecutaremos. Para crearlo
+		ejecutaremos el siguiente comando "awk ­f alta.awk usuarios.csv"</p>
+	<p align='center'>En mi caso los tres ficheros los puse en la siguiente ruta porque sino no me funcionaba el comando para generar el crear.bat</p>
+		<p align='center'><img border='2px' src='./files/48.png'/></p>
+	<p align='center'>Ahora para ejecutarlo tan solo basta con poner el nombre del fichero en la consola de comandos.</p>
+		<p align='center'><img border='2px' src='./files/13.png'/></p>
+	<p align='center'> Finalmente, revisaremos si se nos ha creado todos los usuarios y grupos correctamente.</p>
+		<p align='center'><img border='2px' src='./files/42.png'/></p>
+</body>
+</html>
