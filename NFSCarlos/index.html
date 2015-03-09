@@ -1,0 +1,108 @@
+<html>
+<head>
+	<title>NFS</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>NFS</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>9 de Marzo de 2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Windows</a> | <a href='#bloque2'>Linux</a>
+</div>
+<h1><a id='bloque1'>Windows</a></h1>
+<p>Para desarrollar esta práctica necesitaremos dos máquinas, una Windows 2008 Server Enterprise que hará de servidor y un Windows 7 
+Enterprise que hará de cliente. Configuraremos las interfaces de red de ambas máquinas.</p>
+<p align='center'><img src='./files/1.png'/></p>
+<h3 align='center'>ip estática servidor</h3>
+<p align='center'><img src='./files/3.png'/></p>
+<h3 align='center'>ip dinámica cliente</h3>
+<p>A continuación establecemos el nombre de equipo y grupo de trabajo de ambas máquinas.</p>
+<p align='center'><img src='./files/2.png'/></p>
+<h3 align='center'>Servidor</h3></br>
+<p align='center'><img src='./files/4.png'/></p>
+<h3 align='center'>Cliente</h3>
+<p>Ahora procedemos a instalar el servicio NFS en Windows 2008 Server. Para ello agregamos el rol "Servidor de Archivos" y posteriormente
+	marcamos "Servicio para NFS".</p>
+	<p align='center'><img src='./files/5.png'/></p></br>
+	<p align='center'><img src='./files/6.png'/></p></br>
+	<p align='center'><img src='./files/7.png'/></p></br>
+	<p align='center'><img src='./files/9.png'/></p>
+<p>Configuramos el servidor NFS de la siguiente forma:</p>
+
+<p>Creamos la carpeta c:\export\public. Accedemos a  propiedades / Compartir NFS, y la configuramos para que sea accesible desde la red en modo lectura/escritura con NFS.</p>
+<p>Creamos la carpeta c:\export\private. Accedemos a propiedades / Compartir NFS, y la configuramos para que sea accesible desde la red sólo en modo sólo lectura.</p>
+<p align='center'><img src='./files/12.png'/></p></br>
+<p align='center'><img src='./files/13.png'/></p></br>
+<p align='center'><img src='./files/14.png'/></p>
+<p>A continuación iremos al cliente e instalamos el soporte cliente NFS bajo Windows. En primer lugar vamos a instalar el componente cliente NFS para Windows, para ello vamos a Panel de Control / Programas / Activar o desactivar características de Windows.</p>
+<p align='center'><img src='./files/15.png'/></p>
+<p>Nos desplazamos por el menú hasta localizar Servicios para NFS y dentro de este, Cliente NFS. Marcamos ambos y le damos a Aceptar.</p>
+<p>Para iniciar el servicio NFS en el cliente, abrimos una consola con permisos de Administrador, y ejecutamos el siguiente comando: nfsadmin client start</p>
+<p align='center'><img src='./files/16.png'/></p>
+<p>Ahora necesitamos montar el recurso remoto para poder trabajar con él. Para montar el recurso escribimos:</p>
+<p>Para montar el recurso remoto: mount –o anon,nolock,r,casesensitive \\ip-del-servidor\Nombre-recurso-NFS *. Para comprobar: net use. </p>
+<p>Estos pasos lo haremos para montar tanto la carpeta public como private.</p>
+<p align='center'><img src='./files/17.png'/></p></br>
+<p align='center'><img src='./files/19.png'/></p></br>
+<p>Hecho esto nos deberia salir en la ventana Equipo los recursos montados y comprobamos que podemos acceder a ellos.</p>
+<p align='center'><img src='./files/21.png'/></p>
+<p align='center'><img src='./files/22.png'/></p>
+
+
+<h1><a id='bloque2'>Linux</a></h1>
+<p>Realizaremos la misma práctica en linux, el servidor será un LUbuntu 14.04 y el cliente igual.</p>
+<p>Configuraremos las ips en ambas máquinas.</p>
+<p align='center'><img src='./files/LINUX/1.png'/></p></br>
+<h3 align='center'>ip estática servidor</h3>
+<p align='center'><img src='./files/LINUX/9.png'/></p>
+<h3 align='center'>ip estática cliente</h3>
+<p>Comprobamos que se comunican mediante un ping</p>
+<p align='center'><img src='./files/LINUX/11.png'/></p>
+<p>A continuación instalamos en el servidor el NFS con este comando : apt-get install nfs-common nfs-kernel-server</p>
+<p align='center'><img src='./files/LINUX/3.png'/></p>
+<p>Creamos las siguientes carpetas/permisos:</p>
+<p align='center'><img src='./files/LINUX/4.png'/></p></br>
+<p align='center'><img src='./files/LINUX/5.png'/></p>
+<p>Vamos configurar el servidor NFS de la siguiente forma:
+La carpeta /var/export/public, será accesible desde toda la red en modo lectura/escritura.
+La carpeta /var/export/private, sea accesible sólo desde la IP del cliente, sólo en modo lectura.
+Para ello modificamos el fichero /etc/exports añadiendo las siguientes líneas:</p>
+<p>/var/export/public *(rw,sync,subtree_check)</p>
+<p>/var/export/private ip-del-cliente/32(ro,sync,subtree_check)</p>
+<p align='center'><img src='./files/LINUX/6.png'/></p>
+<p>Guardamos y reiniciamos el servicio, a continuación comprobamos su estado.</p>
+<p align='center'><img src='./files/LINUX/7.png'/></p>
+<p>Con el comando "showmount -e localhost" mostramos la lista de recursos exportados por el servidor nfs.</p>
+<p align='center'><img src='./files/LINUX/8.png'/></p>
+<p>Pasamos al cliente y lo primero que debemos hacer es descargar el cliente NFS. Introducimos el comando "apt-get install nfs-common."</p>
+<p align='center'><img src='./files/LINUX/10.png'/></p>
+<p>Ejecutamos el comando "nmap ip-del-servidor". Nmap sirve para escanear equipos remotos, y averiguar que servicios están ofreciendo al exterior</p>
+<p>A continuación ejecutamos los siguientes comandos para montar los recursos en el cliente</p>
+<p>mkdir /mnt/remoto/public</p>
+<p>mount ip-del-servidor:/var/export/public /mnt/remoto/public</p>
+<p>mkdir /mnt/remoto/private</p>
+<p>mount ip-del-servidor:/var/export/private /mnt/remoto/private</p>
+<p align='center'><img src='./files/montar.png'/></p>
+<p>Una vez hecho esto, podremos ejecutar el comando "df -hT" para comprobar si se han montado correctamente.</p>
+<p align='center'><img src='./files/montar2.png'/></p>
+<p>Probamos a crear un fichero en el cliente y debería aparecer en el servidor.</p>
+<p align='center'><img src='./files/prueba1.png'/></p></br>
+<p align='center'><img src='./files/prueba2.png'/></p>
+<p>Para finalizar si queremos montar automaticamente cada vez que iniciemosel ordenador, debemos modificar el fichero " /etc/fstab."</p>
+<p align='center'><img src='./files/LINUX/15.png'/></p>
+<p>Reiniciamos y comprobamos.</p>
+<p align='center'><img src='./files/LINUX/16.png'/></p>
+</body>
+</html>
