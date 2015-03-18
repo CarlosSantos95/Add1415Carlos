@@ -1,0 +1,55 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>PDC SAMBA</title>
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>PDC Samba</i></li>
+    <li><b>Componentes del grupo:</b> <i>Carlos Santos Carballo</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>18 de Marzo de 2015</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Configuración del PDC</a>
+</div>
+<h1><a id='bloque1'>Configuración del PDC</a></h1>
+<p>Utilizaremos la máquina anterior por lo que tenemos ya instalado el samba:</p>
+      <p> Establecemos el nombre NETBIOS = PDC11</p>
+       <p>Establecemos el nombre de dominio = carlos11.IDP.</p>
+       <img src='./files/1.png'/>
+    <p>Debemos asegurarnos de que existen todos los directorios nombrados en los recursos compartidos (Esto es, las variables path) de la configuración Samba. Tales como:</p>
+        <p>/var/lib/samba/netlogon</p>
+        <p>/var/lib/samba/profiles</p>
+        <p>/usr/local/samba/var</p>
+        <img src='./files/3.png'/>
+        <p>A continuación configuramos la red.</p>
+         <img src='./files/ipserv.png'/>
+        <p>No debemos modificar el fichero "/etc/resolv.conf" porque no da error, por lo que lo dejamos como está.</p>
+        <p>Crearemos el grupo "machines" en el servidor. Vamos a crear las cuentas de máquina "client3" y "client4". Deberemos poner dolar al final del nombre de máquina.</p>
+         <img src='./files/9.png'/>
+        <p>Bloqueamos la cuenta Unix para evitar el acceso a una shell</p>
+        <img src='./files/11.png'/>
+        <p>Vamos a crear la cuenta Samba de la máquina. La opcion –m indica que se trata de una cuenta de tipo máquina</p>
+        <img src='./files/12.png'/>
+        <p>Crear el grupo "enterprise", con los usuarios "kirk", "spock", "sulu".Crear el grupo "borg" con los usuarios "borg1", "borg2" y "borg3".</p>
+        <img src='./files/13.png'/><br><br>
+        <img src='./files/14.png'/><br><br>
+        <img src='./files/15.png'/><br>
+        <p>En el servidor, vamos crear las cuentas Samba: Para todos los usuarios anteriores</p>
+              <img src='./files/16.png'/><br>
+         <p>Además es conveniente crear la carpeta del perfil de cada usuario y poner los permisos correspondientes</p>
+          <img src='./files/17.png'/><br>
+        <p>Para unir el cliente al dominio debemos seguir el siguiente enlace: http://www.mikroways.net/2009/12/05/problema-con-windows-7-y-dominio-samba/  </p>
+        <p>Comprobamos que nos unimos con exito</p>
+        <img src='./files/21.png'/><br>
+</body>
+</html>
